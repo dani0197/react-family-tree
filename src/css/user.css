@@ -1,0 +1,10 @@
+.user {
+    width: 150px;
+    height: 150px;
+    background-color: green;
+}
+
+.user > img {
+    width: 100px;
+    height:100px;
+}

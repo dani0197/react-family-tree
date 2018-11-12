@@ -11,4 +11,14 @@ router.post("/users", (req,res)=>{
     })
 })
 
+router.get("/users/:userName", (req,res)=> {
+    Person.findOne({userName: req.params.userName}).exec((err, data)=> {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            res.send(data)
+        }
+    })
+})
+
 module.exports = router;

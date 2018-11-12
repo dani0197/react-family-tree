@@ -3,16 +3,18 @@ import axios from 'axios';
 
 class PeopleStore {
 
-    @observable person = null
+    @observable user = null
 
     @action addUser = async (userName, imgUrl) => {
-       let newPerson = await axios.post('http://localhost:3030/users', { userName, imgUrl });
-        this.person = newPerson;
+       let newUser = await axios.post('http://localhost:3030/users', { userName, imgUrl });
+        this.user = newUser.data;
     }
 
-    // getUser = (userName)=> {
-    //     axios.get()
-    // } 
+    getUser = async (userName)=> {
+      let currentUser = await axios.get('http://localhost:3030/users/' + userName);
+      this.user = currentUser.data
+      console.log(this.user)
+    } 
 }
 
 

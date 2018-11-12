@@ -13,8 +13,6 @@ class Popup extends Component {
 
     inputChange = (e)=> {
         this.popup[e.target.name] = e.target.value
-        // console.log(this.popup.imgInput)
-        // console.log(this.popup.nameInput)
     }
 
     addUser = ()=> {
@@ -25,7 +23,6 @@ class Popup extends Component {
     }
 
     render() {
-        console.log(this.props.store.addUser)
         return (
             <div className="popup">
                 <div className="popup_inner">

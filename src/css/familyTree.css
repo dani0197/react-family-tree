@@ -1,0 +1,9 @@
+.tree {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(112, 84, 46);
+    margin-top: 1em;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+

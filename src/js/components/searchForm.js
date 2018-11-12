@@ -7,7 +7,7 @@ import '../../css/searchForm.css';
 @inject("store")
 @observer
 class SearchForm extends Component {
-    @observable person = {
+    @observable user = {
         name: "",
     }
 
@@ -15,25 +15,23 @@ class SearchForm extends Component {
 
     togglePopup = ()=> {
         this.showPopup = !this.showPopup
-        // console.log(this.showPopup)
     }
 
     inputChange = (e)=> {
-        this.person[e.target.name] = e.target.value
-        console.log(this.person.name)
+        this.user[e.target.name] = e.target.value
     }
 
     getUser = ()=> {
         let userName = this.user.name
-        this.props.getUser(userName)
+        this.props.store.getUser(userName)
     }
 
     render() {
         return (
             <div className="form">
-                <input type="text" name="name" className="name-search-input" onChange={this.inputChange} />
-                <input type="button" className="input-button" value="Search" />
-                <input type="button" className="add-button" value="Add Person" onClick={this.togglePopup} />
+                <input type="text" name="name" className="name-search-input" value={this.user.name} onChange={this.inputChange} />
+                <input type="button" className="input-button" value="Search" onClick={this.getUser} />
+                <input type="button" className="add-button" value="Add user" onClick={this.togglePopup} />
                 {this.showPopup ? <Popup  closePopup={this.togglePopup} /> : null}
             </div>
         )

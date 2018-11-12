@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import { inject } from "mobx-react";
+import User from './user';
+import { inject, observer } from 'mobx-react';
+import '../../css/familyTree.css';
 
 @inject("store")
+@observer
 class FamilyTree extends Component {
-    
-    
+
+
     render() {
-        <div className="tree">
-            
-        </div>
+        return (
+            <div className="tree">
+                <User />
+            </div>
+        )
     }
 }
 
