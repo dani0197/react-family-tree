@@ -1,17 +1,26 @@
 import React, { Component } from "react";
 import { observable } from "mobx";
-import { inject } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
+import Popup from './popup';
 import '../../css/searchForm.css';
 
 @inject("store")
+@observer
 class SearchForm extends Component {
-    @observable user = {
-        name: ""
+    @observable person = {
+        name: "",
+    }
+
+    @observable showPopup = false
+
+    togglePopup = ()=> {
+        this.showPopup = !this.showPopup
+        // console.log(this.showPopup)
     }
 
     inputChange = (e)=> {
-        this.user[e.target.name] = e.target.value
-        console.log(this.user.name)
+        this.person[e.target.name] = e.target.value
+        console.log(this.person.name)
     }
 
     getUser = ()=> {
@@ -22,9 +31,10 @@ class SearchForm extends Component {
     render() {
         return (
             <div className="form">
-                <input type="text" name="name" className="name-input" onChange={this.inputChange} />
+                <input type="text" name="name" className="name-search-input" onChange={this.inputChange} />
                 <input type="button" className="input-button" value="Search" />
-                <input type="button" className="add-button" value="+" />
+                <input type="button" className="add-button" value="Add Person" onClick={this.togglePopup} />
+                {this.showPopup ? <Popup  closePopup={this.togglePopup} /> : null}
             </div>
         )
     }
